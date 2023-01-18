@@ -1,0 +1,31 @@
+---
+layout: default
+---
+<div class="w3-main w3-content w3-padding w3-container w3-round-large" style="max-width:1200px;margin-top:50px">
+  {%- include hero.html -%}
+</div>
+
+
+
+<div class="w3-row-padding" >
+  {% for item in site.data.sept22.post2 %}
+  <div class="w3-col w3-container m12 l12 " style="margin-top:5px">
+      {{item.plist2}}
+  </div>
+  {%endfor%}
+</div>
+
+{{ content }}
+
+{%- for post in paginator.posts -%}
+<div class="w3-row-padding w3-half" id="about">
+    <div class=" w3-margin-bottom">
+      <div class="w3-container w3-margin-top">
+          {{post.spoti}}
+        <a href="{{ post.url | relative_url }}" class="w3-button w3-light-grey w3-text-grey w3-block w3-round-large"><h3>{{post.title}}</h3></a>
+        <p class="w3-opacity">CEO & Founder</p>
+        <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+      </div>
+  </div>
+</div>
+{%- endfor -%}

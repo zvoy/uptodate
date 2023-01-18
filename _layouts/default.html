@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="{{ site.lang | default: "en-US" }}">
+  {%- include head.html -%}
+  <body>
+
+      {%- include navigation.html -%}
+
+
+    <div class="w3-main w3-content w3-padding w3-container w3-round-large w3-gray" style="max-width:1200px;margin-top:70px">
+        {{ content }}
+    </div >
+    
+
+    <!-- Footer -->
+    <div>
+      <footer class="w3-container w3-center w3-dark-grey w3-padding-32 w3-margin-top ">
+        {% if page.previous.url %}
+          <a class="w3-button w3-round-large w3-pale-yellow  w3-padding-large w3-margin-bottom w3-margin-right " href="{{page.previous.url}}">&laquo; {{page.previous.title}}</a>
+        {% endif %}
+        {% if page.next.url %}
+          <a class="w3-button w3-pale-yellow w3-round-large w3-padding-large w3-margin-bottom" href="{{page.next.url}}">{{page.next.title}} &raquo;</a>
+        {% endif %}
+     <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+
+  <!-- pagination -->
+      {% if paginator.total_pages > 1 %}
+      <div class="pagination">
+        {% if paginator.previous_page %}
+        <a  class="w3-button w3-pale-yellow  w3-round-large w3-padding-large w3-margin-bottom" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
+        {% else %}
+        <span>&laquo; Prev</span>
+        {% endif %}
+
+  
+        {% if paginator.next_page %}
+        <a  class="w3-button w3-pale-yellow  w3-round-large w3-padding-large w3-margin-bottom" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
+        {% else %}
+          <span>Next &raquo;</span>
+        {% endif %}
+    </div>
+    {% endif %}
+     </footer>
+    </div>
+
+
+
+
+    <script>
+      // Slideshow
+      var slideIndex = 1;
+      showDivs(slideIndex);
+      
+      function plusDivs(n) {
+        showDivs(slideIndex += n);
+      }
+      
+      function currentDiv(n) {
+        showDivs(slideIndex = n);
+      }
+      
+      function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demodots");
+        if (n > x.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = x.length} ;
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";  
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" w3-white", "");
+        }
+        x[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " w3-white";
+      }
+      </script>
+      
+    
+  </body>
+</html>
